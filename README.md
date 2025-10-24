@@ -1,175 +1,169 @@
-Talent Hub YukMari
+# Talent Hub YukMari
 
-Deskripsi
+Talent Hub YukMari adalah platform web yang berfungsi sebagai direktori talenta (anggota) yang dapat diakses oleh publik, misalnya perusahaan yang mencari kandidat. Anggota dapat mendaftar melalui Super Admin dan mengelola profil portofolio mereka secara detail, sementara Super Admin memiliki kontrol penuh atas manajemen anggota dan kategori. Aplikasi ini dibangun menggunakan **Laravel Framework** dengan antarmuka modern menggunakan **Tailwind CSS**.
 
-Talent Hub YukMari adalah sebuah platform web yang berfungsi sebagai direktori talenta (anggota) yang dapat diakses oleh publik (misalnya perusahaan yang mencari kandidat). Anggota dapat mendaftar (melalui Super Admin), mengelola profil portofolio mereka secara detail, sementara Super Admin memiliki kontrol penuh atas manajemen anggota dan kategori. Aplikasi ini dibangun menggunakan Laravel Framework dengan antarmuka pengguna yang modern menggunakan Tailwind CSS.
+---
 
-Fitur Utama
+## Fitur Utama
 
-Untuk Pengunjung Publik (Perusahaan, dll.)
+### Untuk Pengunjung Publik (Perusahaan, dll.)
 
-Direktori Talenta: Menampilkan daftar semua anggota terdaftar dalam format tabel yang bersih.
+* **Direktori Talenta**
 
-Menampilkan foto profil kecil, nama, kategori, dan headline.
+  * Menampilkan daftar semua anggota terdaftar dalam format tabel yang bersih.
+  * Menampilkan foto profil kecil, nama, kategori, dan headline.
+  * Fitur pencarian berdasarkan nama anggota.
+  * Fitur filter berdasarkan kategori anggota.
+  * Paginasi (8 anggota per halaman).
+  * Tombol "Lihat Profil" untuk melihat detail setiap anggota.
 
-Fitur pencarian berdasarkan nama anggota.
+* **Halaman Profil Publik**
 
-Fitur filter berdasarkan kategori anggota.
+  * Menampilkan detail lengkap portofolio anggota, termasuk:
 
-Paginasi (8 anggota per halaman).
+    * Informasi dasar (foto, nama, headline, bio, kontak)
+    * Daftar proyek portofolio (dengan deskripsi, skill, link proyek)
+    * Riwayat pengalaman kerja
+    * Riwayat pendidikan
+    * Daftar lisensi dan sertifikat (dengan pratinjau file jika tersedia)
 
-Tombol "Lihat Profil" untuk melihat detail setiap anggota.
+### Untuk Anggota (Talenta)
 
-Halaman Profil Publik: Menampilkan detail lengkap portofolio anggota, termasuk:
+* **Login**: Akses aman ke akun pribadi.
+* **Kelola Profil & Portofolio**
 
-Informasi dasar (foto, nama, headline, bio, kontak).
+  * Update bio & kontak (headline, bio, nomor telepon, LinkedIn, GitHub, portofolio pribadi)
+  * Update foto profil (unggah file atau link eksternal dengan pratinjau)
+  * Manajemen proyek portofolio
+  * Manajemen pengalaman kerja
+  * Manajemen pendidikan
+  * Manajemen sertifikat (unggah file bukti PDF/gambar)
 
-Daftar proyek portofolio (dengan deskripsi, skill, link proyek).
+### Untuk Super Admin
 
-Riwayat pengalaman kerja.
+* **Login**: Akses aman ke area admin.
+* **Dashboard Interaktif**
 
-Riwayat pendidikan.
+  * Statistik total anggota
+  * Statistik jumlah anggota per kategori
+  * Galeri anggota terbaru/acak
+  * Pencarian nama anggota
+  * Paginasi galeri (8 anggota per halaman)
+* **Manajemen Anggota**
 
-Daftar lisensi dan sertifikat (dengan kemungkinan pratinjau file).
+  * CRUD penuh (Create, Read, Update, Delete)
+  * Pencarian dan filter berdasarkan kategori
+  * Paginasi daftar anggota (10 anggota per halaman)
+* **Manajemen Kategori**
 
-Untuk Anggota (Talenta)
+  * CRUD penuh
+  * Sistem mencegah penghapusan kategori jika masih digunakan anggota
 
-Login: Akses aman ke akun pribadi.
+---
 
-Halaman Kelola Profil & Portofolio: Antarmuka terpusat untuk mengelola semua aspek profil:
+## Teknologi yang Digunakan
 
-Update Bio & Kontak: Mengedit headline, bio, nomor telepon, URL LinkedIn, GitHub, dan portofolio pribadi.
+* **Backend:** PHP 8.3.16 / Laravel Framework 12.33.0
+* **Frontend:** Blade Templating Engine, Tailwind CSS, Alpine.js
+* **Database:** MySQL
+* **Server Development:** `php artisan serve`
+* **Asset Bundling:** Vite
 
-Update Foto Profil: Fleksibilitas untuk mengunggah file gambar atau menggunakan link URL eksternal (seperti Google Drive, dengan konversi otomatis untuk link sharing). Pratinjau foto saat ini ditampilkan.
+---
 
-Manajemen Portofolio: Menambah dan menghapus proyek-proyek yang pernah dikerjakan.
+## Instalasi & Setup
 
-Manajemen Pengalaman Kerja: Menambah dan menghapus riwayat pekerjaan.
+1. **Clone Repository**
 
-Manajemen Pendidikan: Menambah dan menghapus riwayat pendidikan formal.
+```bash
+git clone [URL_REPOSITORY_ANDA]
+cd talent_hub_YukMari
+```
 
-Manajemen Sertifikat: Menambah dan menghapus sertifikat (mendukung unggah file bukti seperti PDF/gambar).
+2. **Install Dependencies**
 
-Untuk Super Admin
+```bash
+composer install
+npm install
+```
 
-Login: Akses aman ke area admin.
+3. **Setup Environment**
 
-Dashboard Interaktif:
+```bash
+cp .env.example .env
+```
 
-Menampilkan statistik total anggota.
+* Konfigurasi koneksi database di `.env`
+* Jalankan:
 
-Menampilkan statistik jumlah anggota per kategori (misalnya, Mahasiswa, Umum, Alumni YMP). Kartu statistik ini bisa diklik untuk langsung memfilter di halaman Manajemen Anggota.
+```bash
+php artisan key:generate
+```
 
-Menampilkan galeri anggota terbaru/acak dengan foto, nama, dan kategori.
+4. **Migrasi Database**
 
-Fitur pencarian nama anggota langsung di dashboard.
+```bash
+php artisan migrate
+```
 
-Paginasi untuk galeri anggota (8 anggota per halaman).
+5. **(Opsional) Seeding Data Awal**
 
-Manajemen Anggota:
+```bash
+php artisan db:seed
+```
 
-CRUD (Create, Read, Update, Delete) penuh untuk data anggota (nama, email, password, kategori).
+6. **Storage Link**
 
-Menampilkan daftar anggota dalam tabel.
+```bash
+php artisan storage:link
+```
 
-Fitur pencarian berdasarkan nama anggota.
+7. **Compile Assets**
 
-Fitur filter berdasarkan kategori anggota (menggunakan dropdown).
+```bash
+npm run build  # Produksi
+npm run dev    # Pengembangan
+```
 
-Paginasi untuk daftar anggota (10 anggota per halaman).
+---
 
-Manajemen Kategori:
+## Menjalankan Aplikasi
 
-CRUD (Create, Read, Update, Delete) penuh untuk kategori anggota.
+```bash
+php artisan serve
+```
 
-Sistem mencegah penghapusan kategori jika masih digunakan oleh anggota.
+Buka browser dan akses: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-Teknologi yang Digunakan
+---
 
-Backend: PHP 8.3.16 / Laravel Framework 12.33.0
+## Struktur Folder Utama (Contoh)
 
-Frontend: Blade Templating Engine, Tailwind CSS, Alpine.js (untuk interaktivitas kecil)
-
-Database: MySQL (atau database lain yang didukung Laravel)
-
-Server Development: php artisan serve (PHP Built-in server)
-
-Asset Bundling: Vite
-
-Instalasi & Setup
-
-Clone Repository:
-
-    git clone [https://www.fda.gov/drugs/types-applications/abbreviated-new-drug-application-anda](https://www.fda.gov/drugs/types-applications/abbreviated-new-drug-application-anda)
-    cd talent_hub_YukMari 
-
-
-Install Dependencies:
-
-    composer install
-    npm install
-
-
-Setup Environment:
-
-Salin file .env.example menjadi .env.
-
-Konfigurasi koneksi database (DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD) di file .env.
-
-Jalankan
-
-    php artisan key:generate.
-
-Migrasi Database:
-
-    php artisan migrate
-
-
-(Opsional) Seeding Data Awal: Jika Anda membuat Seeder untuk kategori atau data lainnya:
-
-    php artisan db:seed 
-
-
-Storage Link: Buat tautan simbolik agar file yang diunggah (foto profil, sertifikat) dapat diakses publik:
-
-    php artisan storage:link
-
-
-Compile Assets:
-
-    npm run build 
-
-
-(Atau npm run dev untuk pengembangan)
-
-Menjalankan Aplikasi
-
-Jalankan Server Development:
-
-    php artisan serve
-
-
-Buka browser Anda dan kunjungi http://127.0.0.1:8000 (atau alamat lain yang ditampilkan oleh serve).
-
-Struktur Folder Utama (Contoh)
-
+```
 /app
-├── Console/Commands/       # Perintah Artisan kustom (MigrateCategoryData)
-├── Http/Controllers/       # Controller (Public, Admin, Auth)
-├── Models/                 # Model Eloquent (User, Profile, Category, dll.)
+├── Console/Commands/
+├── Http/Controllers/
+├── Models/
 ├── Providers/
-├── Services/               # Service Class (ProfileService)
-└── View/Components/        # Komponen Blade (ProfileImage)
-/config/                    # File Konfigurasi
+├── Services/
+└── View/Components/
+/config/
 /database
 ├── factories/
-├── migrations/             # File Migrasi Database
-└── seeders/                # File Seeder Database
-/public/                    # Document Root (index.php, assets)
+├── migrations/
+└── seeders/
+/public/
 /resources
-├── css/                    # File CSS (app.css)
-├── js/                     # File JavaScript (app.js)
-└── views/                  # File Blade Views (layouts, auth, public, admin, portfolio, components)
-/routes/                    # Definisi Rute (web.php, console.php)
-/storage/                   # File Storage (logs, cache, public uploads)
-/tests/                     # File Unit & Feature Tests
+├── css/
+├── js/
+└── views/
+/routes/
+/storage/
+/tests/
+```
+
+---
+
+## Lisensi
+
+MIT License
