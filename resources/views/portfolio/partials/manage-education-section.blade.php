@@ -1,0 +1,67 @@
+<div x-data="{ open: false }">
+    <div class="flex justify-between items-center">
+        <div>
+            <h2 class="text-lg font-medium text-gray-100">
+                Pendidikan
+            </h2>
+            <p class="mt-1 text-sm text-gray-400">
+                Tambahkan riwayat pendidikan formal Anda.
+            </p>
+        </div>
+         <button @click="open = !open" class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-500">
+            <span x-show="!open">Tambah Baru</span>
+            <span x-show="open">Tutup Form</span>
+        </button>
+    </div>
+
+    <!-- Form Tambah Baru (Collapsible) -->
+    <div x-show="open" x-transition class="mt-6 border-t border-gray-700 pt-6">
+        <form method="post" action="{{ route('education.store') }}" class="space-y-6">
+            @csrf
+            <div>
+                <label for="edu_institution" class="block mb-2 text-sm font-medium text-gray-300">Nama Institusi</label>
+                <x-text-input id="edu_institution" name="institution_name" type="text" class="mt-1 block w-full" required />
+            </div>
+            <div>
+                <label for="edu_degree" class="block mb-2 text-sm font-medium text-gray-300">Gelar</label>
+                <x-text-input id="edu_degree" name="degree" type="text" class="mt-1 block w-full" placeholder="Contoh: Sarjana Komputer" required />
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="edu_start_date" class="block mb-2 text-sm font-medium text-gray-300">Tanggal Mulai</label>
+                    <x-text-input id="edu_start_date" name="start_date" type="date" class="mt-1 block w-full" required />
+                </div>
+                <div>
+                    <label for="edu_end_date" class="block mb-2 text-sm font-medium text-gray-300">Tanggal Selesai</label>
+                    <x-text-input id="edu_end_date" name="end_date" type="date" class="mt-1 block w-full" required />
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <x-primary-button>{{ __('Simpan Pendidikan') }}</x-primary-button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Daftar Item yang Sudah Ada -->
+    <div class="mt-6 border-t border-gray-700">
+         <h3 class="text-md font-medium text-gray-200 pt-6">Riwayat Pendidikan Anda</h3>
+        <div class="mt-4 space-y-4">
+            @forelse ($educations as $item)
+                 <div class="flex justify-between items-center p-4 border border-gray-700 rounded-lg">
+                    <div>
+                        <p class="font-bold text-white">{{ $item->institution_name }}</p>
+                        <p class="text-sm text-gray-400">{{ $item->degree }}</p>
+                    </div>
+                    <form action="{{ route('education.destroy', $item->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-red-500 hover:text-red-400 text-sm" onclick="return confirm('Yakin ingin menghapus pendidikan ini?')">Hapus</button>
+                    </form>
+                </div>
+            @empty
+                <p class="text-sm text-gray-500">Belum ada riwayat pendidikan ditambahkan.</p>
+            @endforelse
+        </div>
+    </div>
+</div>
+
