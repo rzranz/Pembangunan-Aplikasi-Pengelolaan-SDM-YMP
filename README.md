@@ -1,61 +1,175 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Talent Hub YukMari
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Deskripsi
 
-## About Laravel
+Talent Hub YukMari adalah sebuah platform web yang berfungsi sebagai direktori talenta (anggota) yang dapat diakses oleh publik (misalnya perusahaan yang mencari kandidat). Anggota dapat mendaftar (melalui Super Admin), mengelola profil portofolio mereka secara detail, sementara Super Admin memiliki kontrol penuh atas manajemen anggota dan kategori. Aplikasi ini dibangun menggunakan Laravel Framework dengan antarmuka pengguna yang modern menggunakan Tailwind CSS.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Fitur Utama
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Untuk Pengunjung Publik (Perusahaan, dll.)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Direktori Talenta: Menampilkan daftar semua anggota terdaftar dalam format tabel yang bersih.
 
-## Learning Laravel
+Menampilkan foto profil kecil, nama, kategori, dan headline.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Fitur pencarian berdasarkan nama anggota.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Fitur filter berdasarkan kategori anggota.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Paginasi (8 anggota per halaman).
 
-## Laravel Sponsors
+Tombol "Lihat Profil" untuk melihat detail setiap anggota.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Halaman Profil Publik: Menampilkan detail lengkap portofolio anggota, termasuk:
 
-### Premium Partners
+Informasi dasar (foto, nama, headline, bio, kontak).
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Daftar proyek portofolio (dengan deskripsi, skill, link proyek).
 
-## Contributing
+Riwayat pengalaman kerja.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Riwayat pendidikan.
 
-## Code of Conduct
+Daftar lisensi dan sertifikat (dengan kemungkinan pratinjau file).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Untuk Anggota (Talenta)
 
-## Security Vulnerabilities
+Login: Akses aman ke akun pribadi.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Halaman Kelola Profil & Portofolio: Antarmuka terpusat untuk mengelola semua aspek profil:
 
-## License
+Update Bio & Kontak: Mengedit headline, bio, nomor telepon, URL LinkedIn, GitHub, dan portofolio pribadi.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Update Foto Profil: Fleksibilitas untuk mengunggah file gambar atau menggunakan link URL eksternal (seperti Google Drive, dengan konversi otomatis untuk link sharing). Pratinjau foto saat ini ditampilkan.
+
+Manajemen Portofolio: Menambah dan menghapus proyek-proyek yang pernah dikerjakan.
+
+Manajemen Pengalaman Kerja: Menambah dan menghapus riwayat pekerjaan.
+
+Manajemen Pendidikan: Menambah dan menghapus riwayat pendidikan formal.
+
+Manajemen Sertifikat: Menambah dan menghapus sertifikat (mendukung unggah file bukti seperti PDF/gambar).
+
+Untuk Super Admin
+
+Login: Akses aman ke area admin.
+
+Dashboard Interaktif:
+
+Menampilkan statistik total anggota.
+
+Menampilkan statistik jumlah anggota per kategori (misalnya, Mahasiswa, Umum, Alumni YMP). Kartu statistik ini bisa diklik untuk langsung memfilter di halaman Manajemen Anggota.
+
+Menampilkan galeri anggota terbaru/acak dengan foto, nama, dan kategori.
+
+Fitur pencarian nama anggota langsung di dashboard.
+
+Paginasi untuk galeri anggota (8 anggota per halaman).
+
+Manajemen Anggota:
+
+CRUD (Create, Read, Update, Delete) penuh untuk data anggota (nama, email, password, kategori).
+
+Menampilkan daftar anggota dalam tabel.
+
+Fitur pencarian berdasarkan nama anggota.
+
+Fitur filter berdasarkan kategori anggota (menggunakan dropdown).
+
+Paginasi untuk daftar anggota (10 anggota per halaman).
+
+Manajemen Kategori:
+
+CRUD (Create, Read, Update, Delete) penuh untuk kategori anggota.
+
+Sistem mencegah penghapusan kategori jika masih digunakan oleh anggota.
+
+Teknologi yang Digunakan
+
+Backend: PHP 8.3.16 / Laravel Framework 12.33.0
+
+Frontend: Blade Templating Engine, Tailwind CSS, Alpine.js (untuk interaktivitas kecil)
+
+Database: MySQL (atau database lain yang didukung Laravel)
+
+Server Development: php artisan serve (PHP Built-in server)
+
+Asset Bundling: Vite
+
+Instalasi & Setup
+
+Clone Repository:
+
+    git clone [https://www.fda.gov/drugs/types-applications/abbreviated-new-drug-application-anda](https://www.fda.gov/drugs/types-applications/abbreviated-new-drug-application-anda)
+    cd talent_hub_YukMari 
+
+
+Install Dependencies:
+
+    composer install
+    npm install
+
+
+Setup Environment:
+
+Salin file .env.example menjadi .env.
+
+Konfigurasi koneksi database (DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD) di file .env.
+
+Jalankan
+
+    php artisan key:generate.
+
+Migrasi Database:
+
+    php artisan migrate
+
+
+(Opsional) Seeding Data Awal: Jika Anda membuat Seeder untuk kategori atau data lainnya:
+
+    php artisan db:seed 
+
+
+Storage Link: Buat tautan simbolik agar file yang diunggah (foto profil, sertifikat) dapat diakses publik:
+
+    php artisan storage:link
+
+
+Compile Assets:
+
+    npm run build 
+
+
+(Atau npm run dev untuk pengembangan)
+
+Menjalankan Aplikasi
+
+Jalankan Server Development:
+
+    php artisan serve
+
+
+Buka browser Anda dan kunjungi http://127.0.0.1:8000 (atau alamat lain yang ditampilkan oleh serve).
+
+Struktur Folder Utama (Contoh)
+
+/app
+├── Console/Commands/       # Perintah Artisan kustom (MigrateCategoryData)
+├── Http/Controllers/       # Controller (Public, Admin, Auth)
+├── Models/                 # Model Eloquent (User, Profile, Category, dll.)
+├── Providers/
+├── Services/               # Service Class (ProfileService)
+└── View/Components/        # Komponen Blade (ProfileImage)
+/config/                    # File Konfigurasi
+/database
+├── factories/
+├── migrations/             # File Migrasi Database
+└── seeders/                # File Seeder Database
+/public/                    # Document Root (index.php, assets)
+/resources
+├── css/                    # File CSS (app.css)
+├── js/                     # File JavaScript (app.js)
+└── views/                  # File Blade Views (layouts, auth, public, admin, portfolio, components)
+/routes/                    # Definisi Rute (web.php, console.php)
+/storage/                   # File Storage (logs, cache, public uploads)
+/tests/                     # File Unit & Feature Tests
