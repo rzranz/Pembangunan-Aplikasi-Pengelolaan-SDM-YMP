@@ -70,6 +70,12 @@ Talent Hub YukMari adalah platform web yang berfungsi sebagai direktori talenta 
 * **Asset Bundling:** Vite
 
 ---
+## Link Mockup
+    https://www.figma.com/design/ih7WzR8DN5mZBZxyoVjkoM/Untitled?node-id=1-2&t=hxjBlrURKw56L7gK-1
+    
+
+
+---
 
 ## Instalasi & Setup
 
@@ -90,7 +96,7 @@ npm install
 3. **Setup Environment**
 
 ```bash
-cp .env.example .env
+    ubah .env sesuai dengan kebutuhan
 ```
 
 * Konfigurasi koneksi database di `.env`
