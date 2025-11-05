@@ -8,15 +8,18 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     * * Perintah ini untuk MEMBUAT tabel 'profiles'.
      */
     public function up(): void
     {
-        // Gunakan Schema::create() untuk MEMBUAT tabel baru
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             
-            // Kolom-kolom yang Anda definisikan
+            // Relasi ke tabel users (dari file perbaikan)
+            $table->foreignId('user_id')
+                  ->constrained('users')
+                  ->onDelete('cascade');
+            
+            // Kolom-kolom asli Anda
             $table->string('profile_picture')->nullable();
             $table->string('headline')->nullable();
             $table->string('phone')->nullable();
@@ -24,16 +27,15 @@ return new class extends Migration
             $table->string('github_url')->nullable();
             $table->text('bio')->nullable();
             
-            // Tambahkan ini jika Anda perlu relasi ke tabel users
-            // $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            // Kolom tambahan (dari file perbaikan)
+            $table->string('portfolio_url')->nullable();
             
-            $table->timestamps(); // Menambahkan created_at dan updated_at
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     * * Perintah ini untuk MENGHAPUS tabel 'profiles' jika di-rollback.
      */
     public function down(): void
     {
