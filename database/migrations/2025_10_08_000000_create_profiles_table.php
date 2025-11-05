@@ -14,10 +14,14 @@ return new class extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             
-            // Relasi ke tabel users (dari file perbaikan)
+            // Relasi ke User
             $table->foreignId('user_id')
                   ->constrained('users')
                   ->onDelete('cascade');
+            
+            $table->foreignId('category_id')
+                  ->constrained('categories')
+                  ->onDelete('cascade'); // Atau onDelete('restrict') jika Anda mau
             
             // Kolom-kolom asli Anda
             $table->string('profile_picture')->nullable();
@@ -27,7 +31,7 @@ return new class extends Migration
             $table->string('github_url')->nullable();
             $table->text('bio')->nullable();
             
-            // Kolom tambahan (dari file perbaikan)
+            // Kolom tambahan
             $table->string('portfolio_url')->nullable();
             
             $table->timestamps();

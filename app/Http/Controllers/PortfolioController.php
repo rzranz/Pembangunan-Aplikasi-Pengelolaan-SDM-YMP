@@ -2,53 +2,46 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str; // <-- Tambahkan ini
+use Illuminate\Support\Facades\Storage; // <-- Tambahkan ini
 
 class PortfolioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $profile = Auth::user()->profile;
-        $portfolios = $profile->portfolios()->latest()->get();
-        return view('portfolio.index', compact('portfolios'));
-    }
-
-    /**
-     * Show the form for managing portfolio items.
-     */
-    public function manage() 
-    {
-        $profile = Auth::user()->profile;
-        $portfolios = $profile->portfolios()->latest()->get();
-        return view('portfolio.manage', compact('portfolios'));
-    }
+    // ... method index() dan manage() Anda ...
 
     public function store(Request $request)
     {
-        $request->validate([
+        // 1. Validasi (termasuk validasi untuk file gambar)
+        $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'skills_used' => 'required|string',
             'project_url' => 'nullable|url',
+            // Tambahkan validasi untuk thumbnail
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048', 
         ]);
 
         $profile = Auth::user()->profile;
-        $profile->portfolios()->create($request->all());
+        $dataToCreate = $validated;
+
+        // 2. Cek jika ada file thumbnail yang di-upload
+        if ($request->hasFile('thumbnail')) {
+            // 3. Simpan file ke storage/app/public/portfolios
+            // dan simpan path-nya ke variabel
+            $path = $request->file('thumbnail')->store('portfolios', 'public');
+            
+            // 4. Masukkan path file ke data yang akan disimpan
+            $dataToCreate['thumbnail'] = $path;
+        }
+
+        // 5. Buat portofolio menggunakan data yang sudah tervalidasi
+        $profile->portfolios()->create($dataToCreate);
 
         return redirect()->route('portfolio.manage')->with('success', 'Portofolio berhasil ditambahkan.');
     }
-    public function destroy(Portfolio $portfolio)
-    {
-        if ($portfolio->profile->user_id !== Auth::id()) {
-            abort(403, 'Unauthorized action.');
-        }
-        $portfolio->delete();
-        return redirect()->route('portfolio.manage')->with('success', 'Portofolio berhasil dihapus.');
-    }
+
+    // ... method destroy() Anda ...
 }
